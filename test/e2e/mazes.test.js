@@ -17,9 +17,19 @@ describe('mazes REST api', () => {
         ]
     };
 
+    let two = {
+        matrix: [
+            [ 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', ],
+            [ 'WALL', 'START', 'FLOOR', 'END', 'WALL'],
+            [ 'WALL', 'FLOOR', 'WALL', 'FLOOR', 'WALL'],
+            [ 'WALL', 'FLOOR', 'WALL', 'FLOOR', 'WALL'],
+            [ 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', ]
+        ]
+    };
+
     function saveMaze(maze) {
         return request
-            .post('api/mazes')
+            .post('/api/mazes')
             .send(maze)
             .then(({ body }) => {
                 maze._id = body._id;
@@ -33,8 +43,13 @@ describe('mazes REST api', () => {
             .then( savedMaze => {
                 assert.isOk(savedMaze._id);
                 assert.deepEqual(savedMaze.matrix, one.matrix);
-            })
-            .catch(console.log);
+            });
     });
 
-})
+    it('gets all mazes from the database', () => {
+        before( () => saveMaze(two) );
+
+        
+    })
+
+});
