@@ -33,7 +33,8 @@ describe('mazes REST api', () => {
             .then( savedMaze => {
                 assert.isOk(savedMaze._id);
                 assert.deepEqual(savedMaze.matrix, one.matrix);
-            });
+            })
+            .catch(console.log);
     });
 
 })
