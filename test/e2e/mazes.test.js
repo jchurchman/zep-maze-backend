@@ -6,6 +6,7 @@ require('../../lib/connect');
 describe('mazes REST api', () => {
 
     before( () => db.drop('mazes') );
+    before( () => saveMaze(two) );
 
     let one = {
         matrix: [
@@ -20,9 +21,9 @@ describe('mazes REST api', () => {
     let two = {
         matrix: [
             [ 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', ],
-            [ 'WALL', 'START', 'FLOOR', 'END', 'WALL'],
+            [ 'WALL', 'START', 'FLOOR', 'FLOOR', 'WALL'],
             [ 'WALL', 'FLOOR', 'WALL', 'FLOOR', 'WALL'],
-            [ 'WALL', 'FLOOR', 'WALL', 'FLOOR', 'WALL'],
+            [ 'WALL', 'FLOOR', 'WALL', 'END', 'WALL'],
             [ 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', ]
         ]
     };
@@ -47,7 +48,6 @@ describe('mazes REST api', () => {
     });
 
     it('gets all mazes from the database', () => {
-        before( () => saveMaze(two) );
 
         return request.get('/api/mazes')
             .then(res => res.body)
