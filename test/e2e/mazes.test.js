@@ -53,7 +53,14 @@ describe('mazes REST api', () => {
             .then(res => res.body)
             .then( mazes => {
                 assert.equal(mazes.length, 2);
-            })
-    })
+            });
+    });
 
+    it('gets a maze from the database by id', () => {
+        return request.get(`/api/mazes/${one._id}`)
+            .then(res => res.body)
+            .then( maze => {
+                assert.deepEqual(maze.matrix, one.matrix);
+            });
+    });
 });
