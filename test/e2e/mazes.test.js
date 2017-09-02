@@ -7,6 +7,7 @@ describe('mazes REST api', () => {
 
     before( () => db.drop('mazes') );
     before( () => saveMaze(two) );
+    before( () => saveMaze(three) );
 
     let one = {
         matrix: [
@@ -24,6 +25,16 @@ describe('mazes REST api', () => {
             [ 'WALL', 'START', 'FLOOR', 'FLOOR', 'WALL'],
             [ 'WALL', 'FLOOR', 'WALL', 'FLOOR', 'WALL'],
             [ 'WALL', 'FLOOR', 'WALL', 'END', 'WALL'],
+            [ 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', ]
+        ]
+    };
+
+    let three = {
+        matrix: [
+            [ 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', ],
+            [ 'WALL', 'START', 'FLOOR', 'FLOOR', 'WALL'],
+            [ 'WALL', 'WALL', 'WALL', 'FLOOR', 'WALL'],
+            [ 'WALL', 'END', 'FLOOR', 'FLOOR', 'WALL'],
             [ 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', ]
         ]
     };
