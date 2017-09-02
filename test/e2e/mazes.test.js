@@ -49,7 +49,11 @@ describe('mazes REST api', () => {
     it('gets all mazes from the database', () => {
         before( () => saveMaze(two) );
 
-        
+        return request.get('/api/mazes')
+            .then(res => res.body)
+            .then( mazes => {
+                assert.equal(mazes.length, 2);
+            })
     })
 
 });
