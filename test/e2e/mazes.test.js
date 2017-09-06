@@ -10,12 +10,12 @@ describe('mazes REST api', () => {
     before( () => saveMaze(three) );
 
     let one = {
-        matrix: [
-            [ 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', ],
-            [ 'WALL', 'START', 'WALL', 'END', 'WALL'],
-            [ 'WALL', 'FLOOR', 'WALL', 'FLOOR', 'WALL'],
-            [ 'WALL', 'FLOOR', 'FLOOR', 'FLOOR', 'WALL'],
-            [ 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', ]
+        "matrix": [
+            [ "WALL", "WALL", "WALL", "WALL", "WALL", ],
+            [ "WALL", "START", "WALL", "END", "WALL"],
+            [ "WALL", "FLOOR", "WALL", "FLOOR", "WALL"],
+            [ "WALL", "FLOOR", "FLOOR", "FLOOR", "WALL"],
+            [ "WALL", "WALL", "WALL", "WALL", "WALL", ]
         ]
     };
 
