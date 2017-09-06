@@ -63,7 +63,7 @@ describe('mazes REST api', () => {
         return request.get('/api/mazes')
             .then(res => res.body)
             .then( mazes => {
-                assert.equal(mazes.length, 2);
+                assert.equal(mazes.length, 3);
             });
     });
 
@@ -72,6 +72,13 @@ describe('mazes REST api', () => {
             .then(res => res.body)
             .then( maze => {
                 assert.deepEqual(maze.matrix, one.matrix);
+            });
+    });
+
+    it('deletes a maze from the database by id', () => {
+        return request.delete(`/api/mazes/${one._id}`)
+            .then(res => {
+                assert.deepEqual(res.body, { removed: true });
             });
     });
 });
