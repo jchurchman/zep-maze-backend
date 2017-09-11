@@ -26,4 +26,17 @@ describe.only('user model', () => {
             );
     });
 
+    it('new user generates hash', () => {
+        const user = new User({
+            email: 'bob@bob.bob'
+        });
+        const password = '123';
+        user.generateHash(password);
+
+        assert.notEqual(user.hash, password);
+
+        assert.isOk(user.comparePassword('123'));
+        assert.isNotOk(user.comparePassword('badpassword'));
+    });
+
 });
