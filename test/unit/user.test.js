@@ -1,7 +1,7 @@
 const assert = require('chai').assert;
 const User = require('../../lib/models/user');
 
-describe.only('user model', () => {
+describe('user model', () => {
 
     it('validates with required fields', () => {
         const user = new User({
