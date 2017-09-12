@@ -9,7 +9,7 @@ describe.only('ensure auth middleware', () => {
             get() { return ''; }
         };
 
-        const next = (error) => {
+        const next = error => {
             assert.deepEqual(error, { code: 401, error: 'No Authorization Found' });
             done();
         };
@@ -18,5 +18,18 @@ describe.only('ensure auth middleware', () => {
 
     });
 
+    it('routes to error handler with bad token', done => {
+        const req = {
+            get() { return 'bad-token'; }
+        };
 
-})
+        const next = error => {
+            assert.deepEqual(error, { code: 403, error: 'Authorization Failed' });
+            done();
+        };
+
+        ensureAuth(req, null, next);
+
+    })
+
+});
