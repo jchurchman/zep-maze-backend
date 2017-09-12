@@ -23,7 +23,7 @@ describe.only('ensure auth middleware', () => {
             get() { return 'bad-token'; }
         };
 
-        const next = error => {
+        const next = (error) => {
             assert.deepEqual(error, { code: 403, error: 'Authorization Failed' });
             done();
         };
