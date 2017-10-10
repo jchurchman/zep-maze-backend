@@ -30,6 +30,6 @@ describe.only('ensure auth middleware', () => {
 
         ensureAuth(req, null, next);
 
-    })
+    });
 
 });
